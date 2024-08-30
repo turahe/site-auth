@@ -1,0 +1,36 @@
+{
+    "name": "turahe/site-auth",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nur Wachid",
+            "email": "wachid@outlook.com"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "spatie/laravel-permission": "^6.9"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Auth\\Providers\\AuthServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Auth\\": "app/",
+            "Modules\\Auth\\Database\\Factories\\": "database/factories/",
+            "Modules\\Auth\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Auth\\Tests\\": "tests/"
+        }
+    }
+}
