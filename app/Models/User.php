@@ -16,6 +16,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Scout\Searchable;
 use Laravelcm\Subscriptions\Traits\HasPlanSubscriptions;
+use Modules\Subscription\Traits\HasPlanSubscriptions;
 use Modules\System\Concerns\HasSettings;
 use Spatie\Permission\Traits\HasRoles;
 use Turahe\Media\HasMedia;
@@ -38,12 +39,12 @@ use Turahe\Media\HasMedia;
  * @property-read int|null $addresses_count
  * @property-read mixed $alias
  * @property-read mixed $avatar
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Model\Email> $emails
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Auth\Models\Model\Email> $emails
  * @property-read int|null $emails_count
  * @property-read mixed $full_name
  * @property-read \Kalnoy\Nestedset\Collection<int, \App\Models\Organization> $managedOrganization
  * @property-read int|null $managed_organization_count
- * @property-read \Kalnoy\Nestedset\Collection<int, \App\Models\Media> $media
+ * @property-read \Kalnoy\Nestedset\Collection<int, \Modules\System\Models\Media> $media
  * @property-read int|null $media_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
@@ -51,7 +52,7 @@ use Turahe\Media\HasMedia;
  * @property-read int|null $organizations_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Auth\Models\Permission> $permissions
  * @property-read int|null $permissions_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Model\Phone> $phones
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Auth\Models\Model\Phone> $phones
  * @property-read int|null $phones_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravelcm\Subscriptions\Models\Subscription> $planSubscriptions
  * @property-read int|null $plan_subscriptions_count
