@@ -3,9 +3,7 @@
 namespace Modules\Auth\Models;
 
 use App\Concerns\Address\HasAddresses;
-use App\Concerns\HasEmail;
 use App\Concerns\HasOrganization;
-use App\Concerns\HasPhones;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
@@ -16,6 +14,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Scout\Searchable;
 use Laravelcm\Subscriptions\Traits\HasPlanSubscriptions;
+use Modules\Auth\Concerns\HasEmail;
+use Modules\Auth\Concerns\HasPhones;
 use Modules\Subscription\Traits\HasPlanSubscriptions;
 use Modules\System\Concerns\HasSettings;
 use Spatie\Permission\Traits\HasRoles;
