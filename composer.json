@@ -16,9 +16,7 @@
             "providers": [
                 "Modules\\Auth\\Providers\\AuthServiceProvider"
             ],
-            "aliases": {
-
-            }
+            "aliases": {}
         }
     },
     "autoload": {

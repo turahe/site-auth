@@ -2,7 +2,6 @@
 
 namespace Modules\Auth\Models;
 
-use App\Concerns\HasOrganization;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
@@ -13,16 +12,17 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Scout\Searchable;
 use Modules\Address\Concerns\HasAddresses;
-use Modules\Auth\Concerns\HasEmail;
-use Modules\Auth\Concerns\HasPhones;
 use Modules\SocialMedia\Models\Workspace;
 use Modules\Subscription\Traits\HasPlanSubscriptions;
 use Modules\System\Concerns\HasSettings;
+use Modules\User\Concerns\HasEmail;
+use Modules\User\Concerns\HasOrganization;
+use Modules\User\Concerns\HasPhones;
 use Spatie\Permission\Traits\HasRoles;
 use Turahe\Media\HasMedia;
 
 /**
- * 
+ *
  *
  * @property string $id
  * @property string $username
@@ -39,20 +39,20 @@ use Turahe\Media\HasMedia;
  * @property-read int|null $addresses_count
  * @property-read mixed $alias
  * @property-read mixed $avatar
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Auth\Models\Model\Email> $emails
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Email> $emails
  * @property-read int|null $emails_count
  * @property-read mixed $full_name
- * @property-read \Kalnoy\Nestedset\Collection<int, \App\Models\Organization> $managedOrganization
+ * @property-read \Kalnoy\Nestedset\Collection<int, \Modules\User\Models\Organization> $managedOrganization
  * @property-read int|null $managed_organization_count
  * @property-read \Kalnoy\Nestedset\Collection<int, \Modules\System\Models\Media> $media
  * @property-read int|null $media_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
- * @property-read \Kalnoy\Nestedset\Collection<int, \App\Models\Organization> $organizations
+ * @property-read \Kalnoy\Nestedset\Collection<int, \Modules\User\Models\Organization> $organizations
  * @property-read int|null $organizations_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Auth\Models\Permission> $permissions
  * @property-read int|null $permissions_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Auth\Models\Model\Phone> $phones
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Phone> $phones
  * @property-read int|null $phones_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravelcm\Subscriptions\Models\Subscription> $planSubscriptions
  * @property-read int|null $plan_subscriptions_count

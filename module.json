@@ -2,15 +2,9 @@
     "name": "Auth",
     "alias": "auth",
     "description": "",
-    "keywords": [
-        "authentication",
-        "auth",
-        "site"
-    ],
+    "keywords": ["authentication", "auth", "site"],
     "priority": 0,
-    "providers": [
-        "Modules\\Auth\\Providers\\AuthServiceProvider"
-    ],
+    "providers": ["Modules\\Auth\\Providers\\AuthServiceProvider"],
     "files": [],
     "id": "02",
     "title": "Site Authentication",

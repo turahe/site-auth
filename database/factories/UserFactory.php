@@ -12,10 +12,10 @@
 
 namespace Modules\Auth\Database\Factories;
 
-use App\Models\Organization;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Modules\Auth\Models\User;
+use Modules\User\Models\Organization;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory
