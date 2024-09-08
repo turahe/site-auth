@@ -2,11 +2,20 @@
 
 namespace Modules\Auth\Models;
 
-use App\Models\Google;
-use app\Services\AccessTokenProvider;
 use Illuminate\Database\Eloquent\Model;
 use Modules\MailClient\Events\OAuthAccountDeleting;
+use Turahe\Core\Facades\Google;
+use Turahe\Core\OAuth\AccessTokenProvider;
 
+/**
+ * @property-read \Modules\Auth\Models\User|null $user
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|OAuthAccount newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OAuthAccount newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OAuthAccount query()
+ *
+ * @mixin \Eloquent
+ */
 class OAuthAccount extends Model
 {
     /**
@@ -79,5 +88,4 @@ class OAuthAccount extends Model
     {
         return new AccessTokenProvider($this->access_token, $this->email);
     }
-
 }

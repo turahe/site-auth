@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Sqits\UserStamps\Concerns\HasUserStamps;
 
 /**
- *
- *
  * @property string $id
  * @property string $name
  * @property string $guard_name
@@ -20,6 +18,7 @@ use Sqits\UserStamps\Concerns\HasUserStamps;
  * @property-read int|null $permissions_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Auth\Models\User> $users
  * @property-read int|null $users_count
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Role newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Role newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Role permission($permissions, $without = false)
@@ -30,6 +29,7 @@ use Sqits\UserStamps\Concerns\HasUserStamps;
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Role withoutPermission($permissions)
+ *
  * @mixin \Eloquent
  */
 class Role extends \Spatie\Permission\Models\Role

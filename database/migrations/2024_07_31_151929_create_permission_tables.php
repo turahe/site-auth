@@ -29,10 +29,28 @@ return new class extends Migration
             $table->ulid('id')->primary(); // permission id
             $table->string('name');       // For MyISAM use string('name', 225); // (or 166 for InnoDB with Redundant/Compact row format)
             $table->string('guard_name'); // For MyISAM use string('guard_name', 25);
-            $table->integer('created_at')->nullable();
-            $table->integer('updated_at')->nullable();
 
             $table->unique(['name', 'guard_name']);
+
+            $table->foreignUlid('created_by')
+                ->index()
+                ->nullable()
+                ->constrained('users')
+                ->cascadeOnDelete();
+            $table->foreignUlid('updated_by')
+                ->index()
+                ->nullable()
+                ->constrained('users')
+                ->cascadeOnDelete();
+            $table->foreignUlid('deleted_by')
+                ->index()
+                ->nullable()
+                ->constrained('users')
+                ->cascadeOnDelete();
+
+            $table->integer('deleted_at')->index()->nullable();
+            $table->integer('created_at')->index()->nullable();
+            $table->integer('updated_at')->index()->nullable();
         });
 
         Schema::create($tableNames['roles'], function (Blueprint $table) use ($teams, $columnNames) {
@@ -44,8 +62,26 @@ return new class extends Migration
             }
             $table->string('name');       // For MyISAM use string('name', 225); // (or 166 for InnoDB with Redundant/Compact row format)
             $table->string('guard_name'); // For MyISAM use string('guard_name', 25);
-            $table->integer('created_at')->nullable();
-            $table->integer('updated_at')->nullable();
+            $table->foreignUlid('created_by')
+                ->index()
+                ->nullable()
+                ->constrained('users')
+                ->cascadeOnDelete();
+            $table->foreignUlid('updated_by')
+                ->index()
+                ->nullable()
+                ->constrained('users')
+                ->cascadeOnDelete();
+            $table->foreignUlid('deleted_by')
+                ->index()
+                ->nullable()
+                ->constrained('users')
+                ->cascadeOnDelete();
+
+            $table->integer('deleted_at')->index()->nullable();
+            $table->integer('created_at')->index()->nullable();
+            $table->integer('updated_at')->index()->nullable();
+
             if ($teams || config('permission.testing')) {
                 $table->unique([$columnNames['team_foreign_key'], 'name', 'guard_name']);
             } else {

@@ -4,5 +4,5 @@ namespace Modules\Auth\Enums;
 
 enum Role: string
 {
-    case MERCHANT = 'Merchant';
+    case Merchant = 'MERCHANT';
 }

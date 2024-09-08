@@ -2,7 +2,6 @@
 
 namespace Modules\Auth\Models;
 
-use App\Concerns\Address\HasAddresses;
 use App\Concerns\HasOrganization;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -13,17 +12,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Scout\Searchable;
-use Laravelcm\Subscriptions\Traits\HasPlanSubscriptions;
+use Modules\Address\Concerns\HasAddresses;
 use Modules\Auth\Concerns\HasEmail;
 use Modules\Auth\Concerns\HasPhones;
+use Modules\SocialMedia\Models\Workspace;
 use Modules\Subscription\Traits\HasPlanSubscriptions;
 use Modules\System\Concerns\HasSettings;
 use Spatie\Permission\Traits\HasRoles;
 use Turahe\Media\HasMedia;
 
 /**
- *
- *
  * @property string $id
  * @property string $username
  * @property string|null $phone
@@ -35,7 +33,7 @@ use Turahe\Media\HasMedia;
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Address> $addresses
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Address\Models\Address> $addresses
  * @property-read int|null $addresses_count
  * @property-read mixed $alias
  * @property-read mixed $avatar
@@ -62,7 +60,8 @@ use Turahe\Media\HasMedia;
  * @property-read int|null $settings_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
  * @property-read int|null $tokens_count
- * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
+ *
+ * @method static \Modules\Auth\Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User ofManager(\App\Models\User $user, $withCurrentUser = true)
@@ -85,6 +84,7 @@ use Turahe\Media\HasMedia;
  * @method static \Illuminate\Database\Eloquent\Builder|User withoutPermission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder|User withoutRole($roles, $guard = null)
  * @method static \Illuminate\Database\Eloquent\Builder|User withoutTrashed()
+ *
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements MustVerifyEmail
@@ -147,7 +147,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $defaultSettings = [
         'language',
         'timezone',
-        'datetime'
+        'datetime',
     ];
 
     // settings rules
@@ -201,5 +201,34 @@ class User extends Authenticatable implements MustVerifyEmail
     protected function fullName(): Attribute
     {
         return Attribute::make(get: fn () => $this->people ? "{$this->people->full_name}" : $this->username)->shouldCache();
+    }
+
+    public function setActiveWorkspace(Workspace $workspace): void
+    {
+        $this->settings()->updateOrCreate(
+            [
+                'name' => 'active_workspace',
+                'user_id' => $this->id,
+            ],
+            ['payload' => $workspace->id]
+        );
+    }
+
+    public function getActiveWorkspace()
+    {
+        $workspaceId = $this->settings()
+            ->where('name', 'active_workspace')
+            ->value('payload');
+
+        if (! $workspaceId) {
+            return null;
+        }
+
+        return $this->workspaces()->where('workspace_id', $workspaceId)->first();
+    }
+
+    protected static function newFactory()
+    {
+        return \Modules\Auth\Database\Factories\UserFactory::new();
     }
 }

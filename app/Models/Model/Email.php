@@ -29,8 +29,6 @@ use Sqits\UserStamps\Concerns\HasUserStamps;
 use Turahe\Media\HasMedia;
 
 /**
- *
- *
  * @property string $id
  * @property string $model_type
  * @property string $model_id
@@ -41,6 +39,7 @@ use Turahe\Media\HasMedia;
  * @property int|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Email newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Email newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Email query()
@@ -54,17 +53,42 @@ use Turahe\Media\HasMedia;
  * @method static \Illuminate\Database\Eloquent\Builder|Email whereModelType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Email whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Email whereUpdatedBy($value)
+ *
  * @property-read \Modules\Auth\Models\User|null $author
  * @property-read \Modules\Auth\Models\User|null $destroyer
  * @property-read \Modules\Auth\Models\User|null $editor
+ * @property-read mixed $display_email
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, EmailAccountFolder> $folders
+ * @property-read int|null $folders_count
+ * @property-read mixed $formatted_from_name_header
+ * @property-read mixed $from_name_header
+ * @property-read \Kalnoy\Nestedset\Collection<int, \Modules\System\Models\Media> $media
+ * @property-read int|null $media_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, EmailAccountMessage> $messages
+ * @property-read int|null $messages_count
+ * @property-read OAuthAccount|null $oAuthAccount
+ * @property bool $requires_auth
+ * @property-read EmailAccountFolder|null $sentFolder
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\System\Models\Setting> $settings
+ * @property-read int|null $settings_count
+ * @property-read EmailAccountFolder|null $trashFolder
+ * @property-read mixed $type
+ * @property-read Model|\Eloquent $user
+ *
+ * @method static Builder|Email personal(int $userId)
+ * @method static Builder|Email shared()
+ * @method static Builder|Email syncable()
+ * @method static Builder|Email withCommon()
+ * @method static Builder|Email withFolders()
+ *
  * @mixin \Eloquent
  */
 class Email extends Model
 {
+    use HasMedia;
+    use HasSettings;
     use HasUlids;
     use HasUserStamps;
-    use HasSettings;
-    use HasMedia;
 
     protected $table = 'model_emails';
 
@@ -99,7 +123,7 @@ class Email extends Model
         'imap_encryption',
         'smtp_server',
         'smtp_port',
-        'smtp_encryption'
+        'smtp_encryption',
     ];
 
     // settings rules
