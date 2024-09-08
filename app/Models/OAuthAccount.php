@@ -8,12 +8,12 @@ use Turahe\Core\Facades\Google;
 use Turahe\Core\OAuth\AccessTokenProvider;
 
 /**
- * @property-read \Modules\Auth\Models\User|null $user
+ * 
  *
+ * @property-read \Modules\Auth\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder|OAuthAccount newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OAuthAccount newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OAuthAccount query()
- *
  * @mixin \Eloquent
  */
 class OAuthAccount extends Model

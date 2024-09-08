@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Sqits\UserStamps\Concerns\HasUserStamps;
 
 /**
+ * 
+ *
  * @property string $id
  * @property string $model_type
  * @property string $model_id
@@ -21,7 +23,6 @@ use Sqits\UserStamps\Concerns\HasUserStamps;
  * @property-read \Modules\Auth\Models\User|null $author
  * @property-read \Modules\Auth\Models\User|null $destroyer
  * @property-read \Modules\Auth\Models\User|null $editor
- *
  * @method static \Illuminate\Database\Eloquent\Builder|SocialMedia newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialMedia newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialMedia query()
@@ -36,7 +37,6 @@ use Sqits\UserStamps\Concerns\HasUserStamps;
  * @method static \Illuminate\Database\Eloquent\Builder|SocialMedia whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialMedia whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialMedia whereUpdatedBy($value)
- *
  * @mixin \Eloquent
  */
 class SocialMedia extends Model

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Modules\SocialMedia\Casts\EncryptArrayObject;
 
 /**
+ * 
+ *
  * @property string $id
  * @property mixed $secret_key
  * @property string $user_id
@@ -14,7 +16,6 @@ use Modules\SocialMedia\Casts\EncryptArrayObject;
  * @property int|null $confirmed_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- *
  * @method static \Illuminate\Database\Eloquent\Builder|UserTwoFactorAuth newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|UserTwoFactorAuth newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|UserTwoFactorAuth query()
@@ -25,7 +26,6 @@ use Modules\SocialMedia\Casts\EncryptArrayObject;
  * @method static \Illuminate\Database\Eloquent\Builder|UserTwoFactorAuth whereSecretKey($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserTwoFactorAuth whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserTwoFactorAuth whereUserId($value)
- *
  * @mixin \Eloquent
  */
 class UserTwoFactorAuth extends Model

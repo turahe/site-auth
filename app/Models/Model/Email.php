@@ -29,6 +29,8 @@ use Sqits\UserStamps\Concerns\HasUserStamps;
 use Turahe\Media\HasMedia;
 
 /**
+ * 
+ *
  * @property string $id
  * @property string $model_type
  * @property string $model_id
@@ -39,7 +41,6 @@ use Turahe\Media\HasMedia;
  * @property int|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- *
  * @method static \Illuminate\Database\Eloquent\Builder|Email newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Email newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Email query()
@@ -53,7 +54,6 @@ use Turahe\Media\HasMedia;
  * @method static \Illuminate\Database\Eloquent\Builder|Email whereModelType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Email whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Email whereUpdatedBy($value)
- *
  * @property-read \Modules\Auth\Models\User|null $author
  * @property-read \Modules\Auth\Models\User|null $destroyer
  * @property-read \Modules\Auth\Models\User|null $editor
@@ -74,13 +74,11 @@ use Turahe\Media\HasMedia;
  * @property-read EmailAccountFolder|null $trashFolder
  * @property-read mixed $type
  * @property-read Model|\Eloquent $user
- *
  * @method static Builder|Email personal(int $userId)
  * @method static Builder|Email shared()
  * @method static Builder|Email syncable()
  * @method static Builder|Email withCommon()
  * @method static Builder|Email withFolders()
- *
  * @mixin \Eloquent
  */
 class Email extends Model

@@ -22,6 +22,8 @@ use Spatie\Permission\Traits\HasRoles;
 use Turahe\Media\HasMedia;
 
 /**
+ * 
+ *
  * @property string $id
  * @property string $username
  * @property string|null $phone
@@ -60,7 +62,6 @@ use Turahe\Media\HasMedia;
  * @property-read int|null $settings_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
  * @property-read int|null $tokens_count
- *
  * @method static \Modules\Auth\Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
@@ -84,7 +85,6 @@ use Turahe\Media\HasMedia;
  * @method static \Illuminate\Database\Eloquent\Builder|User withoutPermission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder|User withoutRole($roles, $guard = null)
  * @method static \Illuminate\Database\Eloquent\Builder|User withoutTrashed()
- *
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements MustVerifyEmail
